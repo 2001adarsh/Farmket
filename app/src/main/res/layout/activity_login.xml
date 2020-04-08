@@ -31,9 +31,11 @@
 
     <EditText
         android:id="@+id/emailLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="76dp"
+        android:layout_marginEnd="64dp"
         android:drawableLeft="@drawable/ic_account_box_black_24dp"
         android:ems="10"
         android:hint="Email Id"
@@ -45,9 +47,11 @@
 
     <EditText
         android:id="@+id/passwordLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:ems="10"
         android:hint="PASSWORD"
@@ -101,6 +105,7 @@
         android:layout_marginTop="20dp"
         android:text="Dont have account? \nLogin Here"
         android:textSize="15sp"
+        android:textColor="#000"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,6 +124,7 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/login"
         app:layout_constraintHorizontal_bias="1.0"
+        android:textColor="#000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
