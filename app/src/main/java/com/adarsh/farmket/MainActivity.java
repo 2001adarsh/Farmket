@@ -10,10 +10,11 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements  ChipNavigationBar.OnItemSelectedListener{
 
-    private BottomNavigationView bottomNav;
+    private ChipNavigationBar bottomNav;
     private FrameLayout frameLayout;
 
 
@@ -24,18 +25,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         setui();
 
-        bottomNav.setOnNavigationItemSelectedListener(this);
+        if(savedInstanceState==null) //Placing default fragments
+        {
+            bottomNav.setItemSelected(R.id.nav_home, true);
+
+        }
+
+        bottomNav.setOnItemSelectedListener(this);
 
     }
     private void setui(){
 
         frameLayout = (FrameLayout) findViewById(R.id.main_frame);
-        bottomNav = (BottomNavigationView) findViewById(R.id.main_nav);
+        bottomNav = (ChipNavigationBar) findViewById(R.id.main_nav);
     }
 
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+    public void onItemSelected(int i) {
+        switch (i){
 
             case R.id.nav_home:
                 Toast.makeText(this, "Home Fragment!", Toast.LENGTH_SHORT).show();
@@ -50,6 +58,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
                 break;
         }
-        return true;
     }
 }

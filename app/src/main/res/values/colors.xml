@@ -6,4 +6,6 @@
 
     <color name="white">#fff</color>
     <color name="transparentWhite">#80ffffff</color>
+
+    <color name="darkForNav">#141932</color>
 </resources>
