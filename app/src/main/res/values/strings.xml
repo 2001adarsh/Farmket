@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Farmket</string>
     <string name="moto">Taking agriculture to a new experience.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Farm">FARM</string>
+    <string name = "Ket">KET</string>
+
 </resources>

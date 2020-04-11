@@ -1,15 +1,13 @@
 package com.adarsh.farmket;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
+import com.adarsh.farmket.ui.HomeFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity implements  ChipNavigationBar.OnItemSelectedListener{
@@ -28,7 +26,9 @@ public class MainActivity extends AppCompatActivity implements  ChipNavigationBa
         if(savedInstanceState==null) //Placing default fragments
         {
             bottomNav.setItemSelected(R.id.nav_home, true);
-
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_frame, new HomeFragment());
+            ft.commit();
         }
 
         bottomNav.setOnItemSelectedListener(this);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements  ChipNavigationBa
             case R.id.nav_cart:
                 Toast.makeText(this, "Cart Fragment", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_help:
+            case R.id.nav_update:
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_profile:

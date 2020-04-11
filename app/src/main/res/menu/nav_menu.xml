@@ -20,9 +20,9 @@
         app:cnb_textColor = "#fff" />
 
     <item
-        android:id="@+id/nav_help"
-        android:icon="@drawable/help"
-        android:title="Help"
+        android:id="@+id/nav_update"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Updates"
         app:cnb_backgroundColor="#ff785b"
         app:cnb_iconColor="#fff"
         app:cnb_textColor = "#fff"/>

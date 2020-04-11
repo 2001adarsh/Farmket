@@ -8,4 +8,7 @@
     <color name="transparentWhite">#80ffffff</color>
 
     <color name="darkForNav">#141932</color>
+
+    <color name="red">#CD1919</color>
+
 </resources>
