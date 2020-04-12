@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,9 @@ public class HomeFragment extends Fragment {
 
     ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
+
+    private RecyclerView vegetableRV;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -47,6 +51,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Image Slider View.
         sliderView = view.findViewById(R.id.imageSlider);
         sliderView.setSliderAdapter(new AdapterSlider(sliderItems));
         sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
