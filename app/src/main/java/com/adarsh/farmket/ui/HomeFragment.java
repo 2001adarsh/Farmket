@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,11 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.adarsh.farmket.R;
+import com.adarsh.farmket.adapters.AdapterSlider;
+import com.adarsh.farmket.helperClass.SliderItem;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
 
-    Toolbar toolbar;
+    ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
+    private SliderView sliderView;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -27,10 +35,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view =inflater.inflate(R.layout.fragment_home, container, false);
-
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
@@ -41,6 +47,11 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sliderView = view.findViewById(R.id.imageSlider);
+        sliderView.setSliderAdapter(new AdapterSlider(sliderItems));
+        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
 
 
     }

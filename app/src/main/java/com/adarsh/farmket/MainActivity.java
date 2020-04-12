@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements  ChipNavigationBa
         switch (i){
 
             case R.id.nav_home:
-                Toast.makeText(this, "Home Fragment!", Toast.LENGTH_SHORT).show();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main_frame, new HomeFragment());
+                ft.commit();
                 break;
             case R.id.nav_cart:
                 Toast.makeText(this, "Cart Fragment", Toast.LENGTH_SHORT).show();
