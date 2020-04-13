@@ -8,9 +8,9 @@ public class VegetableItem {
     private int img;
     private String Pname;
 
-    public VegetableItem(int img, String pname) {
+    public VegetableItem(int img, String Pname) {
         this.img = img;
-        Pname = pname;
+        this.Pname = Pname;
     }
 
     public int getImg() {

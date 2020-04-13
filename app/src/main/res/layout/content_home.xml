@@ -38,7 +38,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
@@ -48,18 +48,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:text="PRODUCTS"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textSize="32sp"
-                android:textColor="#fff"
                 android:background="@drawable/red_back"
-                />
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="PRODUCTS"
+                android:textColor="#fff"
+                android:textSize="32sp" />
 
             <TextView
                 android:id="@+id/veg"
@@ -69,30 +68,60 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="7dp"
                 android:layout_marginTop="73dp"
-                android:text="Vegetables"
-                android:textSize="20sp"
                 android:padding="5dp"
-                android:textColor="@color/darkGreen"/>
+                android:text="Vegetables"
+                android:textColor="@color/darkGreen"
+                android:textSize="24sp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/veg_card"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/veg"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/vegetableRV"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
+                    android:layout_height="wrap_content" />
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/fruits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/veg_card"
+                android:layout_marginStart="7dp"
+                android:padding="5dp"
+                android:text="Fruits "
+                android:textColor="@color/darkGreen"
+                android:textSize="24sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fruits_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fruits"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fruitsRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 
