@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements  ChipNavigationBa
 
     @Override
     public void onItemSelected(int i) {
+
         switch (i){
 
             case R.id.nav_home:
