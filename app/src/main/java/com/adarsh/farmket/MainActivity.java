@@ -1,13 +1,17 @@
 package com.adarsh.farmket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.adarsh.farmket.ui.CartFragment;
 import com.adarsh.farmket.ui.HomeFragment;
+import com.adarsh.farmket.ui.ProfileFragment;
+import com.adarsh.farmket.ui.UpdateFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity implements  ChipNavigationBar.OnItemSelectedListener{
@@ -43,23 +47,26 @@ public class MainActivity extends AppCompatActivity implements  ChipNavigationBa
 
     @Override
     public void onItemSelected(int i) {
-
+        Fragment fragment = null;
         switch (i){
 
             case R.id.nav_home:
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.main_frame, new HomeFragment());
-                ft.commit();
+                fragment = new HomeFragment();
                 break;
             case R.id.nav_cart:
-                Toast.makeText(this, "Cart Fragment", Toast.LENGTH_SHORT).show();
+                fragment = new CartFragment();
                 break;
             case R.id.nav_update:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                fragment = new UpdateFragment();
                 break;
             case R.id.nav_profile:
-                Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+                fragment = new ProfileFragment();
                 break;
+        }
+        if(fragment != null)
+        {
+            FragmentTransaction ft =getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_frame, fragment).commit();
         }
     }
 }

@@ -18,9 +18,15 @@ import android.view.ViewGroup;
 
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
+import com.adarsh.farmket.adapters.AdapterMachine;
+import com.adarsh.farmket.adapters.AdapterPulse;
+import com.adarsh.farmket.adapters.AdapterSeed;
 import com.adarsh.farmket.adapters.AdapterSlider;
 import com.adarsh.farmket.adapters.AdapterVegetable;
 import com.adarsh.farmket.helperClass.FruitItem;
+import com.adarsh.farmket.helperClass.MachineItem;
+import com.adarsh.farmket.helperClass.PulseItem;
+import com.adarsh.farmket.helperClass.SeedItem;
 import com.adarsh.farmket.helperClass.SliderItem;
 import com.adarsh.farmket.helperClass.VegetableItem;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -32,10 +38,12 @@ public class HomeFragment extends Fragment {
     ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
 
-    private RecyclerView vegetableRV, fruitsRV;
+    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV;
     ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems(7);
     ArrayList<FruitItem> fruitItems = FruitItem.fruitItems(8);
-
+    ArrayList<PulseItem> pulseItems = PulseItem.getPulses(9);
+    ArrayList<SeedItem> seedItems = SeedItem.getSeed(9);
+    ArrayList<MachineItem> machineItems = MachineItem.getMachines(1);
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +79,22 @@ public class HomeFragment extends Fragment {
         fruitsRV = view.findViewById(R.id.fruitsRV);
         fruitsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         fruitsRV.setAdapter(new AdapterFruits(fruitItems));
+
+        //Pulses Recycler View
+        pulsesRV = view.findViewById(R.id.pulsesRV);
+        pulsesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        pulsesRV.setAdapter(new AdapterPulse(pulseItems, getContext()));
+
+        //Seeds Recycler View
+        seedsRV = view.findViewById(R.id.seedsRV);
+        seedsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        seedsRV.setAdapter(new AdapterSeed(seedItems));
+
+        //Machines Recycler View
+        machinesRV = view.findViewById(R.id.machinesRV);
+        machinesRV.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+        machinesRV.setAdapter(new AdapterMachine(machineItems));
+
 
     }
 }

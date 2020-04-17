@@ -70,6 +70,8 @@
                             android:background="@drawable/search_back"
                             android:elevation="5dp"
                             app:iconifiedByDefault="false"
+                            android:focusable="false"
+                            android:focusedByDefault="false"
                             app:queryHint="Search for Products, Services and More" />
                     </androidx.appcompat.widget.Toolbar>
 
