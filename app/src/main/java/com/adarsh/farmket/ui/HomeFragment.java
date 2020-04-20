@@ -19,12 +19,14 @@ import android.view.ViewGroup;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
 import com.adarsh.farmket.adapters.AdapterMachine;
+import com.adarsh.farmket.adapters.AdapterPesticides;
 import com.adarsh.farmket.adapters.AdapterPulse;
 import com.adarsh.farmket.adapters.AdapterSeed;
 import com.adarsh.farmket.adapters.AdapterSlider;
 import com.adarsh.farmket.adapters.AdapterVegetable;
 import com.adarsh.farmket.helperClass.FruitItem;
 import com.adarsh.farmket.helperClass.MachineItem;
+import com.adarsh.farmket.helperClass.PesticidesItem;
 import com.adarsh.farmket.helperClass.PulseItem;
 import com.adarsh.farmket.helperClass.SeedItem;
 import com.adarsh.farmket.helperClass.SliderItem;
@@ -38,12 +40,13 @@ public class HomeFragment extends Fragment {
     ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
 
-    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV;
+    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV, pesticidesRV;
     ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems(7);
     ArrayList<FruitItem> fruitItems = FruitItem.fruitItems(8);
     ArrayList<PulseItem> pulseItems = PulseItem.getPulses(9);
     ArrayList<SeedItem> seedItems = SeedItem.getSeed(9);
     ArrayList<MachineItem> machineItems = MachineItem.getMachines(1);
+    ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides(1);
 
     public HomeFragment() {
         // Required empty public constructor
@@ -95,6 +98,11 @@ public class HomeFragment extends Fragment {
         machinesRV.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
         machinesRV.setAdapter(new AdapterMachine(machineItems));
 
+        //Pesticides Recycler View
+        pesticidesRV = view.findViewById(R.id.pesticidesRV);
+        pesticidesRV.setLayoutManager(new LinearLayoutManager(getContext(),
+                RecyclerView.HORIZONTAL, false));
+        pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems));
 
     }
 }
