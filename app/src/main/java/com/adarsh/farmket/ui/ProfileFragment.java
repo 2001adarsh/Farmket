@@ -29,6 +29,8 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         toolbar = view.findViewById(R.id.toolbar_profile);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        toolbar.inflateMenu(R.menu.profile_menu);
+
         return view;
     }
 
