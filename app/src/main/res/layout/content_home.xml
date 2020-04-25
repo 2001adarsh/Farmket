@@ -41,6 +41,17 @@
                 android:text="Vegetables"
                 android:textColor="@color/darkGreen"
                 android:textSize="24sp" />
+            <TextView
+                android:id="@+id/vegSeeall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:padding="5dp"
+                android:text="See All ->"
+                android:layout_above="@+id/veg_card"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
+                android:textColor="@android:color/holo_blue_dark"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/veg_card"
@@ -71,6 +82,17 @@
                 android:text="Fruits "
                 android:textColor="@color/darkGreen"
                 android:textSize="24sp" />
+            <TextView
+                android:id="@+id/fruitSeeall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="See All ->"
+                android:layout_above="@+id/fruits_card"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
+                android:textColor="@android:color/holo_blue_dark"/>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fruits_card"
@@ -100,6 +122,16 @@
                 android:text="Pulses"
                 android:textColor="@color/darkGreen"
                 android:textSize="24sp" />
+            <TextView
+                android:id="@+id/pulsesSeeall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="See All ->"
+                android:layout_above="@+id/pulses_card"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
+                android:textColor="@android:color/holo_blue_dark"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pulses_card"

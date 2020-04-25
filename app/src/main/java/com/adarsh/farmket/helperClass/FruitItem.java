@@ -27,9 +27,7 @@ public class FruitItem {
             R.drawable.cherry,
             R.drawable.guava,
             R.drawable.mango,
-            R.drawable.oranges,
-            R.drawable.pineapple,
-            R.drawable.fruits
+            R.drawable.oranges
     };
 
     private static String[] names = {
@@ -38,9 +36,7 @@ public class FruitItem {
             "Cherry",
             "Guava",
             "Mango",
-            "Oranges",
-            "Pineapple",
-            "See all ->"
+            "Oranges"
     };
 
     public static ArrayList<FruitItem> fruitItems(int n){

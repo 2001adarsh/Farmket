@@ -27,8 +27,7 @@ public class VegetableItem {
             R.drawable.carrot,
             R.drawable.caulifower,
             R.drawable.eggplant,
-            R.drawable.onion,
-            R.drawable.vegetables
+            R.drawable.onion
     };
     private static String[] names={
             "Tomato",
@@ -37,7 +36,6 @@ public class VegetableItem {
             "Cauliflower",
             "Eggplant",
             "Onion",
-            "See all ->"
     };
     public static ArrayList<VegetableItem> vegetableItems(int n){
         ArrayList<VegetableItem> vg = new ArrayList<>();

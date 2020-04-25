@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
@@ -41,16 +46,20 @@ public class HomeFragment extends Fragment {
     private SliderView sliderView;
 
     private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV, pesticidesRV;
-    ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems(7);
-    ArrayList<FruitItem> fruitItems = FruitItem.fruitItems(8);
-    ArrayList<PulseItem> pulseItems = PulseItem.getPulses(9);
-    ArrayList<SeedItem> seedItems = SeedItem.getSeed(9);
+    ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems(6);
+    ArrayList<FruitItem> fruitItems = FruitItem.fruitItems(6);
+    ArrayList<PulseItem> pulseItems = PulseItem.getPulses(6);
+    ArrayList<SeedItem> seedItems = SeedItem.getSeed(6);
     ArrayList<MachineItem> machineItems = MachineItem.getMachines(1);
     ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides(1);
+
+    TextView machSeeAll, pectSeeAll;
+    FrameLayout frameLayout;
 
     public HomeFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +67,10 @@ public class HomeFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        machSeeAll = view.findViewById(R.id.machSeeall);
+        pectSeeAll = view.findViewById(R.id.pestSeeAll);
+
+        frameLayout = getActivity().findViewById(R.id.main_frame);
         return view;
     }
 
@@ -104,5 +117,26 @@ public class HomeFragment extends Fragment {
                 RecyclerView.HORIZONTAL, false));
         pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems));
 
+
+        machSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new MachineFragment());
+            }
+        });
+
+        pectSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new PesticidesFragment());
+            }
+        });
+
+
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(frameLayout.getId(), fragment).commit();
     }
 }
