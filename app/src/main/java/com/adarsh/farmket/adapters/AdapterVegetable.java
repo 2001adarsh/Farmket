@@ -26,7 +26,7 @@ public class AdapterVegetable extends RecyclerView.Adapter<AdapterVegetable.vege
     @Override
     public vegetableVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view= li.inflate(R.layout.food_item_individual, parent,false);
+        View view= li.inflate(R.layout.fruit_item_individual, parent,false);
         return new vegetableVH(view);
     }
 
@@ -47,8 +47,8 @@ public class AdapterVegetable extends RecyclerView.Adapter<AdapterVegetable.vege
         TextView textView;
         public vegetableVH(@NonNull View itemView) {
             super(itemView);
-            vegImg = itemView.findViewById(R.id.veg_img);
-            textView = itemView.findViewById(R.id.veg_txt);
+            vegImg = itemView.findViewById(R.id.fruit_img);
+            textView = itemView.findViewById(R.id.fruit_text);
         }
     }
 }

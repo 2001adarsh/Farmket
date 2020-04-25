@@ -29,9 +29,9 @@ public class PesticidesItem {
             "Apple"
     };
 
-    public static ArrayList<PesticidesItem> getPesticides(int n){
+    public static ArrayList<PesticidesItem> getPesticides(){
         ArrayList<PesticidesItem> pesticidesItems = new ArrayList<>();
-        for(int i=0; i<n; i++){
+        for(int i=0; i<names.length; i++){
             pesticidesItems.add(new PesticidesItem(images[i], names[i]));
         }
         return pesticidesItems;

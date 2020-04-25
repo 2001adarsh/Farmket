@@ -29,9 +29,9 @@ public class MachineItem {
         "Apple"
     };
 
-    public static ArrayList<MachineItem> getMachines(int n){
+    public static ArrayList<MachineItem> getMachines(){
         ArrayList<MachineItem> machineItems = new ArrayList<>();
-        for(int i=0; i<n; i++){
+        for(int i=0; i<names.length; i++){
             machineItems.add(new MachineItem(images[i], names[i]));
         }
         return machineItems;

@@ -17,9 +17,7 @@ public class PulseItem {
         return image;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name;}
 
     private static int[] images ={
             R.drawable.urad,
@@ -27,10 +25,10 @@ public class PulseItem {
             R.drawable.greenmoong,
             R.drawable.kaalachana,
             R.drawable.kidneybeans,
-            R.drawable.masoor
-            //R.drawable.moongdal,
-            //R.drawable.soyabeandaal,
-            //R.drawable.whitechana
+            R.drawable.masoor,
+            R.drawable.moongdal,
+            R.drawable.soyabeandaal,
+            R.drawable.whitechana
     };
 
     private static String[] names = {
@@ -39,15 +37,15 @@ public class PulseItem {
             "Green Moong",
             "Kaala Chana",
             "Kidney Beans",
-            "Masoor"
-            //"Moong Daal",
-            //"SoyaBean",
-            //"White Chana"
+            "Masoor",
+            "Moong Daal",
+            "SoyaBean",
+            "White Chana"
     };
 
-    public static ArrayList<PulseItem> getPulses(int n){
+    public static ArrayList<PulseItem> getPulses(){
         ArrayList<PulseItem> pulseItems = new ArrayList<>();
-        for(int i=0; i<n; i++){
+        for(int i=0; i<names.length; i++){
             pulseItems.add(new PulseItem(images[i], names[i]));
         }
         return pulseItems;

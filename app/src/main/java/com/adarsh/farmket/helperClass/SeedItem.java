@@ -27,10 +27,10 @@ public class SeedItem {
             R.drawable.jowar,
             R.drawable.mustard,
             R.drawable.peanuts,
-            R.drawable.rice
-            //R.drawable.sugarcane,
-            //R.drawable.tea,
-            //R.drawable.wheat
+            R.drawable.rice,
+            R.drawable.sugarcane,
+            R.drawable.tea,
+            R.drawable.wheat
     };
 
     private static String[] names ={
@@ -40,14 +40,14 @@ public class SeedItem {
             "Mustard",
             "Peanuts",
             "Rice",
-            //"Sugarcane",
-            //"Tea",
-            //"Wheat"
+            "Sugarcane",
+            "Tea",
+            "Wheat"
     };
 
-    public static ArrayList<SeedItem> getSeed(int n){
+    public static ArrayList<SeedItem> getSeed(){
         ArrayList<SeedItem> seedItems = new ArrayList<>();
-        for(int i=0; i<n; i++){
+        for(int i=0; i<names.length; i++){
             SeedItem seedItem = new SeedItem(images[i], names[i]);
             seedItems.add(seedItem);
         }

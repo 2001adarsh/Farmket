@@ -37,9 +37,9 @@ public class VegetableItem {
             "Eggplant",
             "Onion",
     };
-    public static ArrayList<VegetableItem> vegetableItems(int n){
+    public static ArrayList<VegetableItem> vegetableItems(){
         ArrayList<VegetableItem> vg = new ArrayList<>();
-        for(int i=0; i<n; i++)
+        for(int i=0; i<names.length; i++)
         {
             VegetableItem vegetableItem = new VegetableItem(images[i], names[i]);
             vg.add(vegetableItem);

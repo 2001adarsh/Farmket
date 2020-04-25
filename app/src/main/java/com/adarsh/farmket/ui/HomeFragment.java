@@ -1,4 +1,5 @@
 package com.adarsh.farmket.ui;
+
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -46,12 +47,13 @@ public class HomeFragment extends Fragment {
     private SliderView sliderView;
 
     private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV, pesticidesRV;
-    ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems(6);
-    ArrayList<FruitItem> fruitItems = FruitItem.fruitItems(6);
-    ArrayList<PulseItem> pulseItems = PulseItem.getPulses(6);
-    ArrayList<SeedItem> seedItems = SeedItem.getSeed(6);
-    ArrayList<MachineItem> machineItems = MachineItem.getMachines(1);
-    ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides(1);
+
+    ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
+    ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
+    ArrayList<PulseItem> pulseItems = PulseItem.getPulses();
+    ArrayList<SeedItem> seedItems = SeedItem.getSeed();
+    ArrayList<MachineItem> machineItems = MachineItem.getMachines();
+    ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
 
     TextView machSeeAll, pectSeeAll, vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
     FrameLayout frameLayout;

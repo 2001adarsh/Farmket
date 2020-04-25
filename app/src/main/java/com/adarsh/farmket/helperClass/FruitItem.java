@@ -39,9 +39,9 @@ public class FruitItem {
             "Oranges"
     };
 
-    public static ArrayList<FruitItem> fruitItems(int n){
+    public static ArrayList<FruitItem> fruitItems(){
         ArrayList<FruitItem> fi = new ArrayList<>();
-        for(int i=0; i<n; i++)
+        for(int i=0; i<names.length; i++)
         {
             FruitItem fruitItem = new FruitItem(images[i], names[i]);
             fi.add(fruitItem);
