@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     ArrayList<MachineItem> machineItems = MachineItem.getMachines(1);
     ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides(1);
 
-    TextView machSeeAll, pectSeeAll;
+    TextView machSeeAll, pectSeeAll, vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
     FrameLayout frameLayout;
 
     public HomeFragment() {
@@ -67,6 +67,10 @@ public class HomeFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        vegSeeAll = view.findViewById(R.id.vegSeeall);
+        fruitSeeAll = view.findViewById(R.id.fruitSeeall);
+        pulsesSeeAll = view.findViewById(R.id.pulsesSeeall);
+        seedsSeeAll = view.findViewById(R.id.seedSeeAll);
         machSeeAll = view.findViewById(R.id.machSeeall);
         pectSeeAll = view.findViewById(R.id.pestSeeAll);
 
@@ -118,17 +122,36 @@ public class HomeFragment extends Fragment {
         pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems));
 
 
+        //See All when clicked
         machSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                setFragment(new MachineFragment());
+            public void onClick(View view) { setFragment(new MachineFragment());
             }
         });
-
         pectSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) { setFragment(new PesticidesFragment());
+            }
+        });
+        vegSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                setFragment(new PesticidesFragment());
+                setFragment(new VegFragment());
+            }
+        });
+        fruitSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { setFragment(new FruitsFragment());
+            }
+        });
+        pulsesSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {              setFragment(new PulsesFragment());
+            }
+        });
+        seedsSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { setFragment(new SeedsFragment());
             }
         });
 
@@ -137,6 +160,8 @@ public class HomeFragment extends Fragment {
 
     private void setFragment(Fragment fragment) {
         FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(frameLayout.getId(), fragment).commit();
+        ft.replace(frameLayout.getId(), fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }
