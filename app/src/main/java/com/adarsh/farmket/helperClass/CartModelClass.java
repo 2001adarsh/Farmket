@@ -16,11 +16,13 @@ public class CartModelClass {
 
     //Item particular
     private int productImage;
-    private int productName;
-    private String productPrice;
+    private String productName;
+    private int productPrice;
     private int quantity;
 
-    public CartModelClass(int productImage, int productName, String productPrice, int quantity) {
+    public CartModelClass(int type, int productImage, String productName, int productPrice,
+                          int quantity) {
+        this.type = type;
         this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -43,19 +45,19 @@ public class CartModelClass {
         this.productImage = productImage;
     }
 
-    public int getProductName() {
+    public String getProductName() {
         return productName;
     }
 
-    public void setProductName(int productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public String getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -69,21 +71,33 @@ public class CartModelClass {
 
 
     ///Final cart Details
-    private String no_of_items;
+    private int no_of_items;
     private int total_item_price;
-    private String delivery_cart;
+    private int delivery_price;
+    private int total_amount;
 
-    public CartModelClass(String no_of_items, int total_item_price, String delivery_cart) {
+    public CartModelClass(int type, int no_of_items, int total_item_price, int delivery_price,
+                          int total_amount) {
+        this.type = type;
         this.no_of_items = no_of_items;
         this.total_item_price = total_item_price;
-        this.delivery_cart = delivery_cart;
+        this.delivery_price = delivery_price;
+        this.total_amount = total_amount;
     }
 
-    public String getNo_of_items() {
+    public int getTotal_amount() {
+        return total_amount;
+    }
+
+    public void setTotal_amount(int total_amount) {
+        this.total_amount = total_amount;
+    }
+
+    public int getNo_of_items() {
         return no_of_items;
     }
 
-    public void setNo_of_items(String no_of_items) {
+    public void setNo_of_items(int no_of_items) {
         this.no_of_items = no_of_items;
     }
 
@@ -95,11 +109,11 @@ public class CartModelClass {
         this.total_item_price = total_item_price;
     }
 
-    public String getDelivery_cart() {
-        return delivery_cart;
+    public int getDelivery_price() {
+        return delivery_price;
     }
 
-    public void setDelivery_cart(String delivery_cart) {
-        this.delivery_cart = delivery_cart;
+    public void setDelivery_price(int delivery_price) {
+        this.delivery_price = delivery_price;
     }
 }
