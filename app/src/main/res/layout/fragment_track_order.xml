@@ -35,7 +35,290 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No orders to show"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="5dp"
+        android:freezesText="false"
+        android:padding="5dp"
+        android:text="Your current order status :"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Ordered On"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Order No."
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textView17"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Total Amount"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/ordered_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="2nd May 20"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/order_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="#123312"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/amount_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Rs. 240"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_no">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_orderDelivered"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/greyForStatus"
+            android:src="@drawable/delivered"
+            android:translationX="-5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_orderDispatched"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_orderPlaced"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/greyForStatus"
+            android:src="@drawable/order_placed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_orderDispatched"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/greyForStatus"
+            android:src="@drawable/dispatched"
+            android:translationX="-5dp"
+            app:layout_constraintStart_toEndOf="@+id/img_orderPreparing"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_orderPreparing"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/greyForStatus"
+            android:src="@drawable/preparing"
+            android:translationX="-5dp"
+            app:layout_constraintStart_toEndOf="@+id/img_orderPlaced"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/Bar3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:progress="100"
+            android:progressTint="@color/greyForStatus"
+            android:translationX="-5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_orderDispatched"
+            app:layout_constraintEnd_toStartOf="@+id/img_orderDelivered"
+            app:layout_constraintStart_toEndOf="@+id/img_orderDispatched"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/Bar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:progress="100"
+            android:progressTint="@color/greyForStatus"
+            android:translationX="-5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_orderPreparing"
+            app:layout_constraintEnd_toStartOf="@+id/img_orderDispatched"
+            app:layout_constraintStart_toEndOf="@+id/img_orderPreparing"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/bar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:progress="100"
+            android:progressTint="@color/greyForStatus"
+            android:translationX="-5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_orderPlaced"
+            app:layout_constraintEnd_toStartOf="@+id/img_orderPreparing"
+            app:layout_constraintStart_toEndOf="@+id/img_orderPlaced"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Order\nPlaced"
+            app:layout_constraintEnd_toEndOf="@+id/img_orderPlaced"
+            app:layout_constraintStart_toStartOf="@+id/img_orderPlaced"
+            app:layout_constraintTop_toBottomOf="@+id/img_orderPlaced" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Processed"
+            app:layout_constraintEnd_toEndOf="@+id/img_orderPreparing"
+            app:layout_constraintStart_toStartOf="@+id/img_orderPreparing"
+            app:layout_constraintTop_toBottomOf="@+id/img_orderPreparing" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Dispatched"
+            app:layout_constraintEnd_toEndOf="@+id/img_orderDispatched"
+            app:layout_constraintStart_toStartOf="@+id/img_orderDispatched"
+            app:layout_constraintTop_toBottomOf="@+id/img_orderDispatched" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Delivered"
+            app:layout_constraintEnd_toEndOf="@+id/img_orderDelivered"
+            app:layout_constraintStart_toStartOf="@+id/img_orderDelivered"
+            app:layout_constraintTop_toBottomOf="@+id/img_orderDelivered" />
+
+        <TextView
+            android:id="@+id/open_maps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
+            android:text="See on Map"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <View
+            android:id="@+id/divider10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="32dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/open_maps" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider10">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/privacy_policy"
+                android:tint="#0E0E0E" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center_vertical"
+                android:text="View the Receipt"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
