@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.adarsh.farmket.AboutUsActivity;
+import com.adarsh.farmket.HelpActivity;
 import com.adarsh.farmket.R;
 
 public class ProfileFragment extends Fragment {
@@ -53,7 +54,8 @@ public class ProfileFragment extends Fragment {
         int id = item.getItemId();
 
         if(id == R.id.profile_help){
-            Toast.makeText(getActivity(), "Help", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(getContext(), HelpActivity.class);
+            startActivity(it);
         }
         else if(id == R.id.about_us){
             Intent it = new Intent(getContext(), AboutUsActivity.class);

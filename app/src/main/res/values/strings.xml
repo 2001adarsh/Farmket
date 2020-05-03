@@ -23,4 +23,10 @@
 
     <string name="Address">info.farmket@gmail.com \nChandigarh,India \n8288974334</string>
 
+    <string name="FAQ_intro">Getting Started or having trouble?\nCheck out some of the
+        Frequently Asked Questions, you might get your answer here.</string>
+    <string name="need_Help">Need Help?\nContact us!</string>
+
+    <string name="suggestions">Have Suggestions for us?\nPlease, we would like to hear it!</string>
+
 </resources>
