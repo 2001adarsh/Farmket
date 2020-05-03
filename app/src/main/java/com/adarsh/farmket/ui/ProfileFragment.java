@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 //Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.adarsh.farmket.AboutUsActivity;
 import com.adarsh.farmket.R;
 
 public class ProfileFragment extends Fragment {
@@ -54,7 +56,8 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getActivity(), "Help", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.about_us){
-            Toast.makeText(getActivity(), "About us", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(getContext(), AboutUsActivity.class);
+            startActivity(it);
         }
 
         return super.onOptionsItemSelected(item);

@@ -8,6 +8,19 @@
     <string name="Farm">FARM</string>
     <string name="Ket">KET</string>
 
+    <string name="tagLine">The heart of farmers</string>
+    <string name="introduction">"It's been said from the very onset of the human civilization that humans are the greatest assets of this world. What we believe at Farmket is, that not only they're the greatest but the most productive beings ever! By keeping this in mind, we've designed a platform full of the most productive and greatest humankind possible!"</string>
+    <string name="mission">
+        A great man once said, \"Work today as you\'ve to die tomorrow\" and we at Farmket are
+        the greatest believers of that philosophy! We are at a mission to completely transform the
+        Agriculture Industry in India to a whole new level generating wealth and prosperity among the
+        farmers and whole of the Industry! We consider our MISSION as our OBSESSION.</string>
+
+    <string name="promise">We deliver a whole new level of customer experience in Agriculture never ever experienced before in the Industry! Our promise is to keep the experience to the highest level possible!</string>
+
+    <string name="conclusion">We strive each and everyday to be better than our past self and we constantly improve the degree of work quality. We look forward to serve you the best and have a great experience ahead with Farmket! Thank You For Being With Us!
+        Team Farmket</string>
+
     <string name="Address">info.farmket@gmail.com \nChandigarh,India \n8288974334</string>
 
 </resources>
