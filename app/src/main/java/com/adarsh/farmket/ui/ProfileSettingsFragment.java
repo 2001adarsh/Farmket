@@ -1,5 +1,8 @@
 package com.adarsh.farmket.ui;
 //Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,12 +13,15 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.adarsh.farmket.ContactUsActivity;
 import com.adarsh.farmket.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfileSettingsFragment extends Fragment implements View.OnClickListener {
     private FloatingActionButton goToProfileTracking;
+    private LinearLayout ContactUsPage;
 
     public ProfileSettingsFragment() { }
     @Override
@@ -24,6 +30,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile_settings, container, false);
         goToProfileTracking = view.findViewById(R.id.go_to_profile_tacking);
+        ContactUsPage = (LinearLayout) view.findViewById(R.id.contact_us);
         return view;
     }
 
@@ -32,6 +39,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         super.onViewCreated(view, savedInstanceState);
 
         goToProfileTracking.setOnClickListener(this);
+        ContactUsPage.setOnClickListener(this);
     }
 
     @Override
@@ -39,7 +47,11 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         switch (view.getId()){
             case R.id.go_to_profile_tacking:
                 setFragment(new TrackOrderFragment());
-            default: return;
+                break;
+            case R.id.contact_us:
+                setIntent(ContactUsActivity.class);
+                break;
+            default: break;
         }
     }
 
@@ -47,5 +59,10 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.profile_frame_layout, fragment);
         ft.commit();
+    }
+
+    private void setIntent(Class classobj){
+        Intent it = new Intent(getContext(), classobj);
+        startActivity(it);
     }
 }

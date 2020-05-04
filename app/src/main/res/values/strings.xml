@@ -29,4 +29,12 @@
 
     <string name="suggestions">Have Suggestions for us?\nPlease, we would like to hear it!</string>
 
+    <string name="contact_us">We take our commitment to our users seriously.\nIf you need
+        our help with your user account, have questions about how to use our platform or
+        are experiencing technical difficulties, please do not hesitate to contact us.</string>
+
+    <string name="emailAdress">info.farmket@gmail.com</string>
+    <string name="phoneNo">+918288974334</string>
+    <string name="website">https://www.farmket.in/</string>
+
 </resources>
