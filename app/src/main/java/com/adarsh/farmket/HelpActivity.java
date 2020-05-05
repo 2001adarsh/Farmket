@@ -2,12 +2,15 @@ package com.adarsh.farmket;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
+    private ConstraintLayout suggestions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,26 @@ public class HelpActivity extends AppCompatActivity {
         });
 
         //Further
-
+        setui();
+        suggestions.setOnClickListener(this);
     }
+    private void setui(){
+        suggestions = (ConstraintLayout) findViewById(R.id.suggestions_given);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.suggestions_given:
+                intentProvided(SuggestionsActivity.class);
+                break;
+            default:break;
+        }
+    }
+
+    private void intentProvided(Class toClass){
+        Intent it = new Intent(getApplicationContext(), toClass);
+        startActivity(it);
+    }
+
 }

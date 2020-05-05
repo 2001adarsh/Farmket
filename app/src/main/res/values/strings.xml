@@ -37,4 +37,7 @@
     <string name="phoneNo">+918288974334</string>
     <string name="website">https://www.farmket.in/</string>
 
+    <string name="suggestions_page">Looking for a particular UI components, templates,
+        icons or maybe you have a cool idea for our brand and products? Let us know!</string>
+
 </resources>
