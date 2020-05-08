@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ContactUsActivity extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
     private ImageView mail, dial, map, webpage;
+    private TextView gt_faqs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         dial.setOnClickListener(this);
         map.setOnClickListener(this);
         webpage.setOnClickListener(this);
+        gt_faqs.setOnClickListener(this);
     }
 
     private void visitwebsite(){
@@ -68,9 +71,10 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void locateus(Uri geoLocation) {
+    private void locateus() {
+        String geoLocation = getString(R.string.map_search);
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(geoLocation);
+        intent.setData(Uri.parse(geoLocation));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
@@ -81,6 +85,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         dial = (ImageView) findViewById(R.id.call_us);
         map = (ImageView) findViewById(R.id.locate_us);
         webpage = (ImageView) findViewById(R.id.webpage);
+        gt_faqs = (TextView) findViewById(R.id.faqs_from_cont);
     }
 
     @Override
@@ -93,12 +98,20 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
                 dialus();
                 break;
             case R.id.locate_us:
-              //  locateus();
+               locateus();
                 break;
             case R.id.webpage:
                 visitwebsite();
                 break;
+            case R.id.faqs_from_cont:
+                intentProvided(FAQActivity.class);
+                break;
             default: break;
         }
+    }
+
+    private void intentProvided(Class toClass){
+        Intent it = new Intent(getApplicationContext(), toClass);
+        startActivity(it);
     }
 }

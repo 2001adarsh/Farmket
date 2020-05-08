@@ -10,7 +10,7 @@ import android.view.View;
 
 public class HelpActivity extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
-    private ConstraintLayout suggestions;
+    private ConstraintLayout suggestions,faqs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +31,11 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         //Further
         setui();
         suggestions.setOnClickListener(this);
+        faqs.setOnClickListener(this);
     }
     private void setui(){
         suggestions = (ConstraintLayout) findViewById(R.id.suggestions_given);
+        faqs = (ConstraintLayout) findViewById(R.id.faq_from_help);
     }
 
     @Override
@@ -41,6 +43,9 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.suggestions_given:
                 intentProvided(SuggestionsActivity.class);
+                break;
+            case R.id.faq_from_help:
+                intentProvided(FAQActivity.class);
                 break;
             default:break;
         }
