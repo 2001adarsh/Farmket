@@ -16,12 +16,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.adarsh.farmket.ContactUsActivity;
+import com.adarsh.farmket.ProfileSettingHolder;
 import com.adarsh.farmket.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProfileSettingsFragment extends Fragment implements View.OnClickListener {
     private FloatingActionButton goToProfileTracking;
-    private LinearLayout ContactUsPage;
+    private LinearLayout ContactUsPage, shippingAddress, languageSettings, privacyPolicy;
 
     public ProfileSettingsFragment() { }
     @Override
@@ -31,6 +32,8 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         View view = inflater.inflate(R.layout.fragment_profile_settings, container, false);
         goToProfileTracking = view.findViewById(R.id.go_to_profile_tacking);
         ContactUsPage = (LinearLayout) view.findViewById(R.id.contact_us);
+        languageSettings= (LinearLayout) view.findViewById(R.id.language);
+        privacyPolicy = (LinearLayout) view.findViewById(R.id.privacy_policy);
         return view;
     }
 
@@ -40,6 +43,8 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
 
         goToProfileTracking.setOnClickListener(this);
         ContactUsPage.setOnClickListener(this);
+        languageSettings.setOnClickListener(this);
+        privacyPolicy.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +56,10 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
             case R.id.contact_us:
                 setIntent(ContactUsActivity.class);
                 break;
+            case R.id.language:
+                setIntentwithBundle(ProfileSettingHolder.class, "Language");
+            case R.id.privacy_policy:
+                setIntentwithBundle(ProfileSettingHolder.class, "PrivacyPolicy");
             default: break;
         }
     }
@@ -63,6 +72,12 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
 
     private void setIntent(Class classobj){
         Intent it = new Intent(getContext(), classobj);
+        startActivity(it);
+    }
+
+    private void setIntentwithBundle(Class classobj, String value){
+        Intent it = new Intent(getContext(), classobj);
+        it.putExtra("1", value);
         startActivity(it);
     }
 }
