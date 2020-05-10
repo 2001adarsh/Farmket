@@ -37,19 +37,19 @@ public class ProfileSettingHolder extends AppCompatActivity {
         });
 
         titleToolbar = findViewById(R.id.title);
-
         String value = getIntent().getExtras().getString("1");
 
-        if(value.equals("Language")){
-            titleToolbar.setText("Language Settings");
-            setFragment(new LanguageFragment());
-        }
-        else if(value.equals("PrivacyPolicy")){
-            titleToolbar.setText("Privacy Policy");
-            setFragment(new PrivacyPolicyFragment());
-        }
-        else{
-            Log.d("TAG", "onCreate: Went wrong" + value);
+        switch (value){
+            case "Language": titleToolbar.setText("Language Settings");
+                setFragment(new LanguageFragment());
+                break;
+            case "PrivacyPolicy":
+                titleToolbar.setText("Privacy Policy");
+                setFragment(new PrivacyPolicyFragment());
+                break;
+            default:
+                Log.d("TAG", "onCreate: Went wrong" + value);
+                finish();
         }
     }
 
@@ -59,4 +59,9 @@ public class ProfileSettingHolder extends AppCompatActivity {
         ft.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
