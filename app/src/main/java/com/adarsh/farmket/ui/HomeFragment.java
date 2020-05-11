@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -22,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.adarsh.farmket.ContactUsActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
 import com.adarsh.farmket.adapters.AdapterMachine;
@@ -41,22 +43,29 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
-public class HomeFragment extends Fragment {
 
-    ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class HomeFragment extends Fragment implements View.OnClickListener {
+
+    private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
 
     private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV, pesticidesRV;
 
-    ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
-    ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
-    ArrayList<PulseItem> pulseItems = PulseItem.getPulses();
-    ArrayList<SeedItem> seedItems = SeedItem.getSeed();
-    ArrayList<MachineItem> machineItems = MachineItem.getMachines();
-    ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
+    private ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
+    private ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
+    private ArrayList<PulseItem> pulseItems = PulseItem.getPulses();
+    private ArrayList<SeedItem> seedItems = SeedItem.getSeed();
+    private ArrayList<MachineItem> machineItems = MachineItem.getMachines();
+    private ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
 
-    TextView machSeeAll, pectSeeAll, vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
-    FrameLayout frameLayout;
+    private TextView machSeeAll, pectSeeAll, vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
+    private FrameLayout frameLayout;
+
+    //QuickLinks
+    private CircleImageView vegy, fruity, cropy, pulsy, seedy, machy, pesty, conty;
+    private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,7 +75,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         vegSeeAll = view.findViewById(R.id.vegSeeall);
@@ -76,13 +85,44 @@ public class HomeFragment extends Fragment {
         machSeeAll = view.findViewById(R.id.machSeeall);
         pectSeeAll = view.findViewById(R.id.pestSeeAll);
 
+        quickLinksSetUp(view);
+
         frameLayout = getActivity().findViewById(R.id.main_frame);
         return view;
+    }
+
+    private void quickLinksSetUp(View view) {
+        vegy = (CircleImageView) view.findViewById(R.id.quick_veg);
+        tvegy = (TextView) view.findViewById(R.id.quick_veg_txt);
+
+        fruity = (CircleImageView) view.findViewById(R.id.quick_fruit);
+        tfruity = (TextView) view.findViewById(R.id.quick_fruit_txt);
+
+        cropy = (CircleImageView) view.findViewById(R.id.quick_crops);
+        tcropy = (TextView) view.findViewById(R.id.quick_crops_txt);
+
+        seedy = (CircleImageView) view.findViewById(R.id.quick_seeds);
+        tseedy = (TextView) view.findViewById(R.id.quick_seeds_txt);
+
+        pulsy = (CircleImageView) view.findViewById(R.id.quick_pulses);
+        tpulsy = (TextView) view.findViewById(R.id.quick_pulses_txt);
+
+        machy = (CircleImageView) view.findViewById(R.id.quick_machines);
+        tmachy = (TextView) view.findViewById(R.id.quick_machines_txt);
+
+        pesty = (CircleImageView) view.findViewById(R.id.quick_pesticides);
+        tpesty = (TextView) view.findViewById(R.id.quick_pesticides_txt);
+
+        conty = (CircleImageView) view.findViewById(R.id.quick_contact);
+        tconty = (TextView) view.findViewById(R.id.quick_contact_txt);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //initialisation of quick links
+        ClickListenerforQuickLinks();
 
         //Image Slider View.
         sliderView = view.findViewById(R.id.imageSlider);
@@ -93,7 +133,7 @@ public class HomeFragment extends Fragment {
 
         //Vegetable Recycler View
         vegetableRV = view.findViewById(R.id.vegetableRV);
-        vegetableRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+        vegetableRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         vegetableRV.setAdapter(new AdapterVegetable(vegetableItems));
 
 
@@ -114,7 +154,7 @@ public class HomeFragment extends Fragment {
 
         //Machines Recycler View
         machinesRV = view.findViewById(R.id.machinesRV);
-        machinesRV.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+        machinesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         machinesRV.setAdapter(new AdapterMachine(machineItems));
 
         //Pesticides Recycler View
@@ -127,12 +167,14 @@ public class HomeFragment extends Fragment {
         //See All when clicked
         machSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { setFragment(new MachineFragment());
+            public void onClick(View view) {
+                setFragment(new MachineFragment());
             }
         });
         pectSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { setFragment(new PesticidesFragment());
+            public void onClick(View view) {
+                setFragment(new PesticidesFragment());
             }
         });
         vegSeeAll.setOnClickListener(new View.OnClickListener() {
@@ -143,27 +185,73 @@ public class HomeFragment extends Fragment {
         });
         fruitSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { setFragment(new FruitsFragment());
+            public void onClick(View view) {
+                setFragment(new FruitsFragment());
             }
         });
         pulsesSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {              setFragment(new PulsesFragment());
+            public void onClick(View view) {
+                setFragment(new PulsesFragment());
             }
         });
         seedsSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { setFragment(new SeedsFragment());
+            public void onClick(View view) {
+                setFragment(new SeedsFragment());
             }
         });
 
+    }
 
+    private void ClickListenerforQuickLinks() {
+        vegy.setOnClickListener(this);
+        tvegy.setOnClickListener(this);
+        fruity.setOnClickListener(this);
+        tfruity.setOnClickListener(this);
+        seedy.setOnClickListener(this);
+        tseedy.setOnClickListener(this);
+        cropy.setOnClickListener(this);
+        tcropy.setOnClickListener(this);
+        pulsy.setOnClickListener(this);
+        tpulsy.setOnClickListener(this);
+        machy.setOnClickListener(this);
+        tmachy.setOnClickListener(this);
+        pesty.setOnClickListener(this);
+        tpesty.setOnClickListener(this);
+        conty.setOnClickListener(this);
+        tconty.setOnClickListener(this);
     }
 
     private void setFragment(Fragment fragment) {
-        FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(frameLayout.getId(), fragment);
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+
+
+    @Override
+    public void onClick(View view) {
+
+        if (view.getId() == R.id.quick_veg || (view.getId() == R.id.quick_veg_txt)) {
+            setFragment(new VegFragment());
+        } else if (view.getId() == R.id.quick_fruit || (view.getId() == R.id.quick_fruit_txt)) {
+            setFragment(new FruitsFragment());
+        } else if (view.getId() == R.id.quick_crops || (view.getId() == R.id.quick_crops_txt)) {
+
+        } else if (view.getId() == R.id.quick_seeds || (view.getId() == R.id.quick_seeds_txt)) {
+            setFragment(new SeedsFragment());
+        } else if (view.getId() == R.id.quick_pulses || (view.getId() == R.id.quick_pulses_txt)) {
+            setFragment(new PulsesFragment());
+        } else if (view.getId() == R.id.quick_machines || (view.getId() == R.id.quick_machines_txt)) {
+            setFragment(new MachineFragment());
+        } else if (view.getId() == R.id.quick_pesticides || (view.getId() == R.id.quick_pesticides_txt)) {
+            setFragment(new PesticidesFragment());
+        } else if (view.getId() == R.id.quick_contact || (view.getId() == R.id.quick_contact_txt)) {
+            Intent it = new Intent(getContext(), ContactUsActivity.class);
+            startActivity(it);
+        }
     }
 }

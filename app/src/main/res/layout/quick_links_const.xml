@@ -19,13 +19,12 @@
                 android:id="@+id/quick_veg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/vegetable_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.19" />
-
             <TextView
                 android:id="@+id/quick_veg_txt"
                 android:layout_width="wrap_content"
@@ -47,12 +46,14 @@
                 android:id="@+id/quick_fruit"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/fruits_icon"
+                android:tint="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.19" />
+                app:layout_constraintVertical_bias="0.1" />
 
             <TextView
                 android:id="@+id/quick_fruit_txt"
@@ -71,16 +72,16 @@
         android:layout_height="80dp">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/quick_crops"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/help"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/quick_crops"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/crop_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19" />
 
             <TextView
                 android:id="@+id/quick_crops_txt"
@@ -103,7 +104,7 @@
                 android:id="@+id/quick_pulses"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/pulses_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +135,7 @@
                 android:id="@+id/quick_seeds"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/seeds_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,12 +158,11 @@
             android:layout_width="80dp"
             android:layout_height="80dp">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/quick_machines"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/machine_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -190,7 +190,7 @@
                 android:id="@+id/quick_pesticides"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/pesticide_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -218,7 +218,7 @@
                 android:id="@+id/quick_contact"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/help"
+                android:src="@drawable/contact_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
