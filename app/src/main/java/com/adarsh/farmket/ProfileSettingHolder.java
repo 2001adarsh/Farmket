@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.adarsh.farmket.ui.LanguageFragment;
+import com.adarsh.farmket.ui.OrderHistoryFragment;
 import com.adarsh.farmket.ui.PrivacyPolicyFragment;
 
 public class ProfileSettingHolder extends AppCompatActivity {
@@ -46,6 +47,10 @@ public class ProfileSettingHolder extends AppCompatActivity {
             case "PrivacyPolicy":
                 titleToolbar.setText("Privacy Policy");
                 setFragment(new PrivacyPolicyFragment());
+                break;
+            case "OrderHistory":
+                titleToolbar.setText("Order History");
+                setFragment(new OrderHistoryFragment());
                 break;
             default:
                 Log.d("TAG", "onCreate: Went wrong" + value);
