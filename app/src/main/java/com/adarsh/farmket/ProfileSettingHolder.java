@@ -12,12 +12,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.adarsh.farmket.ui.LanguageFragment;
+import com.adarsh.farmket.ui.NotificationSettingsFragment;
 import com.adarsh.farmket.ui.OrderHistoryFragment;
 import com.adarsh.farmket.ui.PrivacyPolicyFragment;
 
 public class ProfileSettingHolder extends AppCompatActivity {
     FrameLayout frameLayout;
-    private Toolbar toolbar;
     TextView titleToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class ProfileSettingHolder extends AppCompatActivity {
         frameLayout = (FrameLayout) findViewById(R.id.profile_holder);
 
         //Setting up toolbar.
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
@@ -51,6 +51,10 @@ public class ProfileSettingHolder extends AppCompatActivity {
             case "OrderHistory":
                 titleToolbar.setText("Order History");
                 setFragment(new OrderHistoryFragment());
+                break;
+            case "NotificationSettings":
+                titleToolbar.setText("NotificationSettings");
+                setFragment(new NotificationSettingsFragment());
                 break;
             default:
                 Log.d("TAG", "onCreate: Went wrong" + value);

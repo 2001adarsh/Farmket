@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ContactUsActivity extends AppCompatActivity implements View.OnClickListener {
-    private Toolbar toolbar;
     private ImageView mail, dial, map, webpage;
     private TextView gt_faqs;
 
@@ -22,7 +21,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_contact_us);
 
         //Setting up toolbar.
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);

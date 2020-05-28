@@ -23,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ProfileSettingsFragment extends Fragment implements View.OnClickListener {
     private FloatingActionButton goToProfileTracking;
     private LinearLayout ContactUsPage, shippingAddress, languageSettings, privacyPolicy,
-            orderHistory;
+            orderHistory, notificationSettings;
 
     public ProfileSettingsFragment() { }
     @Override
@@ -36,6 +36,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         languageSettings= (LinearLayout) view.findViewById(R.id.language);
         privacyPolicy = (LinearLayout) view.findViewById(R.id.privacy_policy);
         orderHistory = (LinearLayout) view.findViewById(R.id.order_history);
+        notificationSettings = (LinearLayout) view.findViewById(R.id.notification_settings);
         return view;
     }
 
@@ -48,6 +49,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         languageSettings.setOnClickListener(this);
         privacyPolicy.setOnClickListener(this);
         orderHistory.setOnClickListener(this);
+        notificationSettings.setOnClickListener(this);
     }
 
     @Override
@@ -67,6 +69,9 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.order_history:
                 setIntentwithBundle(ProfileSettingHolder.class, "OrderHistory");
+                break;
+            case R.id.notification_settings:
+                setIntentwithBundle(ProfileSettingHolder.class, "NotificationSettings");
                 break;
             default: break;
         }
