@@ -46,7 +46,7 @@ public class TrackOrderFragment extends Fragment implements View.OnClickListener
         switch (view.getId()){
             case R.id.go_to_profileSettings:
                 setFragment(new ProfileSettingsFragment());
-
+                break;
             case R.id.open_maps:
                 setIntent(LocationActivity.class);
                 break;

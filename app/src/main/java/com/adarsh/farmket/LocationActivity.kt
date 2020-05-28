@@ -12,6 +12,8 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.adarsh.farmket.helperClass.ClusterMarkers
+import com.adarsh.farmket.helperClass.MyClusterManagerRender
 import com.google.android.gms.location.FusedLocationProviderClient
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -21,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.ClusterManager
 import kotlinx.android.synthetic.main.activity_location.*
 
 class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -28,6 +31,9 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private val locationManager by lazy {
         getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
+    private lateinit var clusterManager: ClusterManager<ClusterMarkers>
+    private lateinit var myClusterManagerRender : MyClusterManagerRender
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
@@ -45,6 +51,7 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         setMapStyle(map)
+        addMapMarkers()
     }
 
     override fun onStart() {
@@ -61,11 +68,27 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun addMapMarkers(){
+       clusterManager = ClusterManager<ClusterMarkers>(this,map)
+        myClusterManagerRender = MyClusterManagerRender(this, map, clusterManager)
+        clusterManager.renderer = myClusterManagerRender
+
+        val title = "Rohtak"
+        val snippet = "Driver is coming"
+        val avatar:Int = R.drawable.logistics
+        val ltnlog = LatLng(28.840656, 76.603336)
+
+        val clusterMarkers = ClusterMarkers(ltnlog, title, snippet, avatar)
+        clusterManager.addItem(clusterMarkers)
+
+        clusterManager.addItem(ClusterMarkers(LatLng(30.772926, 76.576455), "Chandigarh " +
+                "University", "Farmket Headquaters", R.drawable.finish))
+        clusterManager.cluster()
+    }
+
     // Styling the Map
     private fun setMapStyle(map: GoogleMap) {
         try {
-            // Customize the styling of the base map using a JSON object defined
-            // in a raw resource file.
             val success = map.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(this, R.raw.dark_map_style)  )
             if(!success) {
