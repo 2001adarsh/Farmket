@@ -1,5 +1,4 @@
 package com.adarsh.farmket.ui;
-//Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -46,7 +45,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
             getActivity().getMenuInflater().inflate(R.menu.profile_menu, menu);
-            return;
     }
 
     @Override

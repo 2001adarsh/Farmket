@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.adarsh.farmket.ContactUsActivity;
+import com.adarsh.farmket.LocationActivity;
 import com.adarsh.farmket.ProfileSettingHolder;
 import com.adarsh.farmket.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,6 +39,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         privacyPolicy = (LinearLayout) view.findViewById(R.id.privacy_policy);
         orderHistory = (LinearLayout) view.findViewById(R.id.order_history);
         notificationSettings = (LinearLayout) view.findViewById(R.id.notification_settings);
+
         return view;
     }
 
@@ -50,6 +53,7 @@ public class ProfileSettingsFragment extends Fragment implements View.OnClickLis
         privacyPolicy.setOnClickListener(this);
         orderHistory.setOnClickListener(this);
         notificationSettings.setOnClickListener(this);
+
     }
 
     @Override
