@@ -18,9 +18,11 @@ import java.util.ArrayList;
 public class AdapterFruits extends RecyclerView.Adapter<AdapterFruits.FruitsVH> {
 
     ArrayList<FruitItem> fruitItems;
+    FruitsOnClickListener fruitsOnClickListener;
 
-    public AdapterFruits(ArrayList<FruitItem> fruitItems) {
+    public AdapterFruits(ArrayList<FruitItem> fruitItems, FruitsOnClickListener fruitsOnClickListener) {
         this.fruitItems = fruitItems;
+        this.fruitsOnClickListener = fruitsOnClickListener;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class AdapterFruits extends RecyclerView.Adapter<AdapterFruits.FruitsVH> 
     public FruitsVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.fruit_item_individual, parent, false);
-        return new FruitsVH(view);
+        return new FruitsVH(view, fruitsOnClickListener);
     }
 
     @Override
@@ -43,15 +45,25 @@ public class AdapterFruits extends RecyclerView.Adapter<AdapterFruits.FruitsVH> 
         return fruitItems.size();
     }
 
-    public class FruitsVH extends RecyclerView.ViewHolder{
-
+    public class FruitsVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView fruitimg;
         TextView fruitText;
+        FruitsOnClickListener fruitsOnClickListener;
 
-        public FruitsVH(@NonNull View itemView) {
+        public FruitsVH(@NonNull View itemView , FruitsOnClickListener fruitsOnClickListener) {
             super(itemView);
             fruitimg = itemView.findViewById(R.id.fruit_img);
             fruitText = itemView.findViewById(R.id.fruit_text);
+            this.fruitsOnClickListener = fruitsOnClickListener;
+            itemView.setOnClickListener(this);
         }
+        @Override
+        public void onClick(View view) {
+            fruitsOnClickListener.onFruitClick(getAdapterPosition());
+        }
+    }
+
+    public interface FruitsOnClickListener{
+        void onFruitClick(int position);
     }
 }

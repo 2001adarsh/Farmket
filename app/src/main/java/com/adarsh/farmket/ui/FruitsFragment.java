@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
 import com.adarsh.farmket.helperClass.FruitItem;
 
 import java.util.ArrayList;
 
-public class FruitsFragment extends Fragment {
+public class FruitsFragment extends Fragment implements AdapterFruits.FruitsOnClickListener {
 
     public FruitsFragment() {
         // Required empty public constructor
@@ -39,6 +42,11 @@ public class FruitsFragment extends Fragment {
         ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
 
         TRV.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        TRV.setAdapter(new AdapterFruits(fruitItems));
+        TRV.setAdapter(new AdapterFruits(fruitItems, this));
+    }
+
+    @Override
+    public void onFruitClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
 }

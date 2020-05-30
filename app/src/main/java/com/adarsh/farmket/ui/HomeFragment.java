@@ -17,13 +17,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.adarsh.farmket.ContactUsActivity;
+import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterFruits;
 import com.adarsh.farmket.adapters.AdapterMachine;
@@ -46,7 +49,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener, AdapterFruits.FruitsOnClickListener {
 
     private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
@@ -140,7 +143,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //Fruits Recycler View
         fruitsRV = view.findViewById(R.id.fruitsRV);
         fruitsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        fruitsRV.setAdapter(new AdapterFruits(fruitItems));
+        fruitsRV.setAdapter(new AdapterFruits(fruitItems, this));
 
         //Pulses Recycler View
         pulsesRV = view.findViewById(R.id.pulsesRV);
@@ -253,5 +256,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent it = new Intent(getContext(), ContactUsActivity.class);
             startActivity(it);
         }
+    }
+
+    @Override
+    public void onFruitClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
 }
