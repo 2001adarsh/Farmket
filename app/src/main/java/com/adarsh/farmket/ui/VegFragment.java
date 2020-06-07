@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,13 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterVegetable;
 import com.adarsh.farmket.helperClass.VegetableItem;
 
 import java.util.ArrayList;
 
-public class VegFragment extends Fragment {
+public class VegFragment extends Fragment implements AdapterVegetable.VegetableOnClickListener {
 
     public VegFragment() { }
 
@@ -38,6 +40,11 @@ public class VegFragment extends Fragment {
         ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
 
         vegRV.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        vegRV.setAdapter(new AdapterVegetable(vegetableItems));
+        vegRV.setAdapter(new AdapterVegetable(vegetableItems, this));
+    }
+
+    @Override
+    public void onVegClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
 }

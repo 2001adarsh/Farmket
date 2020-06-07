@@ -17,9 +17,11 @@ import java.util.ArrayList;
 public class AdapterVegetable extends RecyclerView.Adapter<AdapterVegetable.vegetableVH> {
 
     ArrayList<VegetableItem> vegetableItems;
+    VegetableOnClickListener vegetableOnClickListener;
 
-    public AdapterVegetable(ArrayList<VegetableItem> vegetableItems) {
+    public AdapterVegetable(ArrayList<VegetableItem> vegetableItems, VegetableOnClickListener vegetableOnClickListener) {
         this.vegetableItems = vegetableItems;
+        this.vegetableOnClickListener = vegetableOnClickListener;
     }
 
     @NonNull
@@ -27,7 +29,7 @@ public class AdapterVegetable extends RecyclerView.Adapter<AdapterVegetable.vege
     public vegetableVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view= li.inflate(R.layout.fruit_item_individual, parent,false);
-        return new vegetableVH(view);
+        return new vegetableVH(view, vegetableOnClickListener);
     }
 
     @Override
@@ -42,13 +44,25 @@ public class AdapterVegetable extends RecyclerView.Adapter<AdapterVegetable.vege
         return vegetableItems.size();
     }
 
-    public class vegetableVH extends RecyclerView.ViewHolder {
+    public class vegetableVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView vegImg;
         TextView textView;
-        public vegetableVH(@NonNull View itemView) {
+        VegetableOnClickListener vegOnClickListener;
+        public vegetableVH(@NonNull View itemView, VegetableOnClickListener vegOnClickListener) {
             super(itemView);
             vegImg = itemView.findViewById(R.id.fruit_img);
             textView = itemView.findViewById(R.id.fruit_text);
+            this.vegOnClickListener = vegOnClickListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            vegOnClickListener.onVegClick(getAdapterPosition());
+        }
+    }
+
+    public interface VegetableOnClickListener {
+        void onVegClick(int position);
     }
 }

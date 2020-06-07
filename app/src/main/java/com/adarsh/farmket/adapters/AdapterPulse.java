@@ -17,11 +17,10 @@ import java.util.ArrayList;
 
 public class AdapterPulse extends RecyclerView.Adapter<AdapterPulse.PulseVH> {
     ArrayList<PulseItem> pulseItems;
-    Context cntx;
-
-    public AdapterPulse(ArrayList<PulseItem> pulseItems, Context cntx) {
+    PulsesOnClickListener pulsesOnClickListener;
+    public AdapterPulse(ArrayList<PulseItem> pulseItems, PulsesOnClickListener pulsesOnClickListener) {
         this.pulseItems = pulseItems;
-        this.cntx = cntx;
+        this.pulsesOnClickListener = pulsesOnClickListener;
     }
 
     @NonNull
@@ -29,7 +28,7 @@ public class AdapterPulse extends RecyclerView.Adapter<AdapterPulse.PulseVH> {
     public PulseVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.fruit_item_individual, parent, false);
-        return new PulseVH(view);
+        return new PulseVH(view, pulsesOnClickListener);
     }
 
     @Override
@@ -44,13 +43,24 @@ public class AdapterPulse extends RecyclerView.Adapter<AdapterPulse.PulseVH> {
         return pulseItems.size();
     }
 
-    public class PulseVH extends RecyclerView.ViewHolder{
+    public class PulseVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView img;
         TextView names;
-        public PulseVH(@NonNull View itemView) {
+        PulsesOnClickListener pulsesOnClickListener;
+        public PulseVH(@NonNull View itemView , PulsesOnClickListener pulsesOnClickListener) {
             super(itemView);
             img = itemView.findViewById(R.id.fruit_img);
             names = itemView.findViewById(R.id.fruit_text);
+            this.pulsesOnClickListener = pulsesOnClickListener ;
+            itemView.setOnClickListener(this);
         }
+        @Override
+        public void onClick(View view) {
+            pulsesOnClickListener.PulsesOnClick(getAdapterPosition());
+        }
+    }
+
+    public interface PulsesOnClickListener{
+        void PulsesOnClick(int position);
     }
 }

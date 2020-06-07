@@ -49,7 +49,8 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener, AdapterFruits.FruitsOnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener,
+        AdapterFruits.FruitsOnClickListener, AdapterVegetable.VegetableOnClickListener, AdapterPulse.PulsesOnClickListener {
 
     private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
@@ -70,9 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
     private CircleImageView vegy, fruity, cropy, pulsy, seedy, machy, pesty, conty;
     private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,7 +136,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
         //Vegetable Recycler View
         vegetableRV = view.findViewById(R.id.vegetableRV);
         vegetableRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        vegetableRV.setAdapter(new AdapterVegetable(vegetableItems));
+        vegetableRV.setAdapter(new AdapterVegetable(vegetableItems, this));
 
 
         //Fruits Recycler View
@@ -148,7 +147,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
         //Pulses Recycler View
         pulsesRV = view.findViewById(R.id.pulsesRV);
         pulsesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        pulsesRV.setAdapter(new AdapterPulse(pulseItems, getContext()));
+        pulsesRV.setAdapter(new AdapterPulse(pulseItems,this));
 
         //Seeds Recycler View
         seedsRV = view.findViewById(R.id.seedsRV);
@@ -262,4 +261,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
     public void onFruitClick(int position) {
         startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
+    @Override
+    public void onVegClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
+    }
+    @Override
+    public void PulsesOnClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
+    }
+
 }
