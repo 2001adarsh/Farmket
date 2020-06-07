@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.adarsh.farmket.R;
+import com.adarsh.farmket.ServicesItemHolderPage;
 import com.adarsh.farmket.adapters.AdapterMachine;
 import com.adarsh.farmket.helperClass.MachineItem;
 
@@ -20,10 +22,9 @@ import java.util.ArrayList;
 
 import static com.adarsh.farmket.MainActivity.onFullMachinePage;
 
-public class MachineFragment extends Fragment {
+public class MachineFragment extends Fragment implements AdapterMachine.MachineOnClickListener {
 
     public MachineFragment() {
-        // Required empty public constructor
     }
 RecyclerView TRV;
     @Override
@@ -41,6 +42,11 @@ RecyclerView TRV;
         super.onViewCreated(view, savedInstanceState);
         ArrayList<MachineItem> machineItems = MachineItem.getMachines();
         TRV.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        TRV.setAdapter(new AdapterMachine(machineItems));
+        TRV.setAdapter(new AdapterMachine(machineItems, this));
+    }
+
+    @Override
+    public void MachineOnClick(int position) {
+        startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
     }
 }

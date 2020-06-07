@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,13 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.adapters.AdapterSeed;
 import com.adarsh.farmket.helperClass.SeedItem;
 
 import java.util.ArrayList;
 
-public class SeedsFragment extends Fragment {
+public class SeedsFragment extends Fragment implements AdapterSeed.SeedOnClickListener {
 
     public SeedsFragment() {
         // Required empty public constructor
@@ -39,6 +41,11 @@ public class SeedsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ArrayList<SeedItem> seedItems = SeedItem.getSeed();
         TRV.setLayoutManager(new GridLayoutManager(getContext(),2));
-        TRV.setAdapter(new AdapterSeed(seedItems));
+        TRV.setAdapter(new AdapterSeed(seedItems, this));
+    }
+
+    @Override
+    public void onSeedClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
 }

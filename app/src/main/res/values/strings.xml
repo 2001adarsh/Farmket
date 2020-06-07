@@ -46,4 +46,16 @@
     <string name="title_activity_location">Map</string>
     <string name="description_for_element"><![CDATA[- 1 Healthy Live Plant Comes With Secure Packing \n-Safe & Quick Delivery by Amazon]]></string>
 
+    <string name="services_for_machines">\n
+        Summer Timings -> 05:00AM - 10:00PM\n
+        Winter Timings -> 07:00AM - 8:00PM\n
+\n
+        No. of Tractor - 01\n
+        No. of Machines - 01\n
+        No. of Driver - 01\n
+\n
+        Rates Unit - per Bigha\n
+        Mode of Pay - Online\n
+    </string>
+
 </resources>

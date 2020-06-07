@@ -19,9 +19,10 @@ import javax.crypto.Mac;
 
 public class AdapterMachine extends RecyclerView.Adapter<AdapterMachine.MachineVH> {
     ArrayList<MachineItem> machineItems;
-
-    public AdapterMachine(ArrayList<MachineItem> machineItems) {
+    MachineOnClickListener machineOnClickListener;
+    public AdapterMachine(ArrayList<MachineItem> machineItems, MachineOnClickListener machineOnClickListener) {
         this.machineItems = machineItems;
+        this.machineOnClickListener = machineOnClickListener;
     }
 
     @NonNull
@@ -29,7 +30,7 @@ public class AdapterMachine extends RecyclerView.Adapter<AdapterMachine.MachineV
     public MachineVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.fruit_item_individual, parent, false);
-        return new MachineVH(view);
+        return new MachineVH(view, machineOnClickListener);
     }
 
     @Override
@@ -44,13 +45,25 @@ public class AdapterMachine extends RecyclerView.Adapter<AdapterMachine.MachineV
         return machineItems.size();
     }
 
-    public class MachineVH extends RecyclerView.ViewHolder{
+    public class MachineVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
         TextView textView;
-        public MachineVH(@NonNull View itemView) {
+        MachineOnClickListener machineOnClickListener;
+        public MachineVH(@NonNull View itemView, MachineOnClickListener machineOnClickListener) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.fruit_img);
             textView = (TextView) itemView.findViewById(R.id.fruit_text);
+            this.machineOnClickListener = machineOnClickListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            machineOnClickListener.MachineOnClick(getAdapterPosition());
+        }
+    }
+
+    public interface MachineOnClickListener{
+        void MachineOnClick(int position);
     }
 }

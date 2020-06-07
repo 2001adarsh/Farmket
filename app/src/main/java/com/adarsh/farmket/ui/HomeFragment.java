@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.adarsh.farmket.ContactUsActivity;
 import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
+import com.adarsh.farmket.ServicesItemHolderPage;
 import com.adarsh.farmket.adapters.AdapterFruits;
 import com.adarsh.farmket.adapters.AdapterMachine;
 import com.adarsh.farmket.adapters.AdapterPesticides;
@@ -50,7 +51,9 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener,
-        AdapterFruits.FruitsOnClickListener, AdapterVegetable.VegetableOnClickListener, AdapterPulse.PulsesOnClickListener {
+        AdapterFruits.FruitsOnClickListener, AdapterVegetable.VegetableOnClickListener,
+        AdapterPulse.PulsesOnClickListener, AdapterSeed.SeedOnClickListener ,
+        AdapterMachine.MachineOnClickListener, AdapterPesticides.PesticidesOnClickListener {
 
     private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
@@ -152,18 +155,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
         //Seeds Recycler View
         seedsRV = view.findViewById(R.id.seedsRV);
         seedsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        seedsRV.setAdapter(new AdapterSeed(seedItems));
+        seedsRV.setAdapter(new AdapterSeed(seedItems, this));
 
         //Machines Recycler View
         machinesRV = view.findViewById(R.id.machinesRV);
         machinesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        machinesRV.setAdapter(new AdapterMachine(machineItems));
+        machinesRV.setAdapter(new AdapterMachine(machineItems, this));
 
         //Pesticides Recycler View
         pesticidesRV = view.findViewById(R.id.pesticidesRV);
         pesticidesRV.setLayoutManager(new LinearLayoutManager(getContext(),
                 RecyclerView.HORIZONTAL, false));
-        pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems));
+        pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems, this));
 
 
         //See All when clicked
@@ -269,5 +272,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
     public void PulsesOnClick(int position) {
         startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
+    @Override
+    public void onSeedClick(int position) {
+        startActivity(new Intent(getContext(), ItemHolderActivity.class));
+    }
+    @Override
+    public void MachineOnClick(int position) {
+        startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
+    }
 
+    @Override
+    public void PesticideOnClick(int position) {
+        startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
+    }
 }

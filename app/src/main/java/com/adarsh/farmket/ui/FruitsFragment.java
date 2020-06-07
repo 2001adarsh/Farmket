@@ -23,10 +23,10 @@ import java.util.ArrayList;
 
 public class FruitsFragment extends Fragment implements AdapterFruits.FruitsOnClickListener {
 
-    public FruitsFragment() {
-        // Required empty public constructor
-    }
+    public FruitsFragment() { }
+
     RecyclerView TRV;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

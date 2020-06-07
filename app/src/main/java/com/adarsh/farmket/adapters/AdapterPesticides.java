@@ -18,9 +18,12 @@ import java.util.ArrayList;
 public class AdapterPesticides extends RecyclerView.Adapter<AdapterPesticides.PesticidesVH> {
 
     ArrayList<PesticidesItem> pesticidesItems;
+    PesticidesOnClickListener pesticidesOnClickListener;
 
-    public  AdapterPesticides(ArrayList<PesticidesItem> pesticidesItems){
+    public  AdapterPesticides(ArrayList<PesticidesItem> pesticidesItems,
+                              PesticidesOnClickListener pesticidesOnClickListener){
         this.pesticidesItems = pesticidesItems;
+        this.pesticidesOnClickListener = pesticidesOnClickListener;
     }
 
     @NonNull
@@ -28,7 +31,7 @@ public class AdapterPesticides extends RecyclerView.Adapter<AdapterPesticides.Pe
     public PesticidesVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.fruit_item_individual, parent, false);
-        return new PesticidesVH(view);
+        return new PesticidesVH(view , pesticidesOnClickListener);
     }
 
     @Override
@@ -43,13 +46,25 @@ public class AdapterPesticides extends RecyclerView.Adapter<AdapterPesticides.Pe
         return pesticidesItems.size();
     }
 
-    public class PesticidesVH extends RecyclerView.ViewHolder{
+    public class PesticidesVH extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imageView;
         TextView textView;
-        public PesticidesVH(@NonNull View itemView) {
+        PesticidesOnClickListener pesticidesOnClickListener;
+        public PesticidesVH(@NonNull View itemView,
+                            PesticidesOnClickListener pesticidesOnClickListener) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.fruit_img);
             textView = (TextView) itemView.findViewById(R.id.fruit_text);
+            this.pesticidesOnClickListener = pesticidesOnClickListener;
+            itemView.setOnClickListener(this);
         }
+        @Override
+        public void onClick(View view) {
+            pesticidesOnClickListener.PesticideOnClick(getAdapterPosition());
+        }
+    }
+
+    public interface PesticidesOnClickListener{
+        void PesticideOnClick(int position);
     }
 }

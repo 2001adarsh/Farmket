@@ -1,5 +1,6 @@
 package com.adarsh.farmket.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,13 @@ import android.view.ViewGroup;
 import static com.adarsh.farmket.MainActivity.onFullPesticidePage;
 
 import com.adarsh.farmket.R;
+import com.adarsh.farmket.ServicesItemHolderPage;
 import com.adarsh.farmket.adapters.AdapterPesticides;
 import com.adarsh.farmket.helperClass.PesticidesItem;
 
 import java.util.ArrayList;
 
-public class PesticidesFragment extends Fragment {
+public class PesticidesFragment extends Fragment implements AdapterPesticides.PesticidesOnClickListener {
 
     public PesticidesFragment() {
         // Required empty public constructor
@@ -40,7 +42,12 @@ public class PesticidesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
         TRV.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        TRV.setAdapter(new AdapterPesticides(pesticidesItems));
+        TRV.setAdapter(new AdapterPesticides(pesticidesItems, this));
 
+    }
+
+    @Override
+    public void PesticideOnClick(int position) {
+        startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
     }
 }
