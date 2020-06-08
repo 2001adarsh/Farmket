@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.ToolbarWidgetWrapper;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -52,27 +53,25 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener,
         AdapterFruits.FruitsOnClickListener, AdapterVegetable.VegetableOnClickListener,
-        AdapterPulse.PulsesOnClickListener, AdapterSeed.SeedOnClickListener ,
-        AdapterMachine.MachineOnClickListener, AdapterPesticides.PesticidesOnClickListener {
+        AdapterPulse.PulsesOnClickListener, AdapterSeed.SeedOnClickListener {
 
     private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
     private SliderView sliderView;
 
-    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV, machinesRV, pesticidesRV;
+    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV;
 
     private ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
     private ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
     private ArrayList<PulseItem> pulseItems = PulseItem.getPulses();
     private ArrayList<SeedItem> seedItems = SeedItem.getSeed();
-    private ArrayList<MachineItem> machineItems = MachineItem.getMachines();
-    private ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
-
-    private TextView machSeeAll, pectSeeAll, vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
+    private TextView vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
     private FrameLayout frameLayout;
 
     //QuickLinks
     private CircleImageView vegy, fruity, cropy, pulsy, seedy, machy, pesty, conty;
     private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
+
+    private CardView workersItem, machineItem, consultancyItem, chainPulleyItem;
 
     public HomeFragment() { }
 
@@ -87,9 +86,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
         fruitSeeAll = view.findViewById(R.id.fruitSeeall);
         pulsesSeeAll = view.findViewById(R.id.pulsesSeeall);
         seedsSeeAll = view.findViewById(R.id.seedSeeAll);
-        machSeeAll = view.findViewById(R.id.machSeeall);
-        pectSeeAll = view.findViewById(R.id.pestSeeAll);
 
+        workersItem = view.findViewById(R.id.worker_view);
+        machineItem = view.findViewById(R.id.machines_view);
+        consultancyItem = view.findViewById(R.id.consultancy_view);
+        chainPulleyItem = view.findViewById(R.id.chainPulley_view);
         quickLinksSetUp(view);
 
         frameLayout = getActivity().findViewById(R.id.main_frame);
@@ -157,31 +158,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
         seedsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         seedsRV.setAdapter(new AdapterSeed(seedItems, this));
 
-        //Machines Recycler View
-        machinesRV = view.findViewById(R.id.machinesRV);
-        machinesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        machinesRV.setAdapter(new AdapterMachine(machineItems, this));
-
-        //Pesticides Recycler View
-        pesticidesRV = view.findViewById(R.id.pesticidesRV);
-        pesticidesRV.setLayoutManager(new LinearLayoutManager(getContext(),
-                RecyclerView.HORIZONTAL, false));
-        pesticidesRV.setAdapter(new AdapterPesticides(pesticidesItems, this));
 
 
-        //See All when clicked
-        machSeeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setFragment(new MachineFragment());
-            }
-        });
-        pectSeeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setFragment(new PesticidesFragment());
-            }
-        });
+
         vegSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -204,6 +183,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onClick(View view) {
                 setFragment(new SeedsFragment());
+            }
+        });
+
+
+        //Services
+        workersItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startServiceItemPage();
+            }
+        });
+
+        machineItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new MachineFragment());
+            }
+        });
+
+        consultancyItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startServiceItemPage();
+            }
+        });
+
+        chainPulleyItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startServiceItemPage();
             }
         });
 
@@ -276,13 +285,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
     public void onSeedClick(int position) {
         startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
-    @Override
-    public void MachineOnClick(int position) {
-        startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
-    }
 
-    @Override
-    public void PesticideOnClick(int position) {
+    private void startServiceItemPage() {
         startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
     }
 }

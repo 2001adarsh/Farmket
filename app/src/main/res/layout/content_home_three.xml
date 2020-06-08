@@ -20,87 +20,179 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/machines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/services"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Machines"
-        android:textColor="@color/darkGreen"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/services" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/machines_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/machines"
-        android:layout_alignParentStart="true"
+        android:id="@+id/consultancy_view"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:padding="5dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/chainPulley_view"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/machines">
+        app:layout_constraintTop_toBottomOf="@+id/worker_view" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/machinesRV"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/consultancy" />
+
+            <TextView
+                android:id="@+id/textView115"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lemon"
+                android:text="Consultancy"
+                android:textColor="#070707"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/pesticides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/machines_card"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Pesticides"
-        android:textColor="@color/darkGreen"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/machines_card" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/pesticides_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pesticides"
-        android:layout_alignParentStart="true"
+        android:id="@+id/chainPulley_view"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/consultancy_view"
+        app:layout_constraintTop_toBottomOf="@+id/worker_view" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/chainkuppy" />
+
+            <TextView
+                android:id="@+id/textView116"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lemon"
+                android:text="Chain Kuppi"
+                android:textColor="#070707"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/worker_view"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:padding="5dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/machines_view"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pesticides">
+        app:layout_constraintTop_toBottomOf="@+id/services" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/pesticidesRV"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/worker" />
+
+            <TextView
+                android:id="@+id/textView106"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lemon"
+                android:text="Workers"
+                android:textColor="#0E0E0E"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/machines_view"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/worker_view"
+        app:layout_constraintTop_toTopOf="@+id/worker_view" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/tractor" />
+
+            <TextView
+                android:id="@+id/textView107"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lemon"
+                android:text="Machines"
+                android:textColor="#070707"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/red_back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pesticides_card">
+        app:layout_constraintTop_toBottomOf="@+id/consultancy_view">
 
         <TextView
             android:id="@+id/desc_farmket"
@@ -123,27 +215,5 @@
             android:textColor="@color/white" />
 
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/machSeeall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:padding="5dp"
-        android:text="See All ->"
-        android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/machines"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/pestSeeAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:padding="5dp"
-        android:text="See All ->"
-        android:textColor="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/pesticides"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
