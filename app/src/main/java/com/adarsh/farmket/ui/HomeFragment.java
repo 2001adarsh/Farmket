@@ -51,26 +51,19 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeFragment extends Fragment implements View.OnClickListener,
-        AdapterFruits.FruitsOnClickListener, AdapterVegetable.VegetableOnClickListener,
-        AdapterPulse.PulsesOnClickListener, AdapterSeed.SeedOnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private ArrayList<SliderItem> sliderItems = SliderItem.setSliderView(4);
-    private SliderView sliderView;
 
-    private RecyclerView vegetableRV, fruitsRV, pulsesRV, seedsRV;
-
-    private ArrayList<VegetableItem> vegetableItems = VegetableItem.vegetableItems();
-    private ArrayList<FruitItem> fruitItems = FruitItem.fruitItems();
-    private ArrayList<PulseItem> pulseItems = PulseItem.getPulses();
-    private ArrayList<SeedItem> seedItems = SeedItem.getSeed();
-    private TextView vegSeeAll, fruitSeeAll, pulsesSeeAll, seedsSeeAll;
     private FrameLayout frameLayout;
 
     //QuickLinks
     private CircleImageView vegy, fruity, cropy, pulsy, seedy, machy, pesty, conty;
     private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
 
+    //Products
+    private CardView vegetableItem, fruitItem, pulsesItem, seedItem, cropsItems, pesticidesItem;
+    //Services
     private CardView workersItem, machineItem, consultancyItem, chainPulleyItem;
 
     public HomeFragment() { }
@@ -82,11 +75,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        vegSeeAll = view.findViewById(R.id.vegSeeall);
-        fruitSeeAll = view.findViewById(R.id.fruitSeeall);
-        pulsesSeeAll = view.findViewById(R.id.pulsesSeeall);
-        seedsSeeAll = view.findViewById(R.id.seedSeeAll);
 
+        //products
+        vegetableItem = view.findViewById(R.id.vegetable_view);
+        fruitItem = view.findViewById(R.id.fruits_view);
+        pulsesItem = view.findViewById(R.id.pulses_view);
+        seedItem = view.findViewById(R.id.seeds_view);
+        cropsItems = view.findViewById(R.id.crops_view);
+        pesticidesItem = view.findViewById(R.id.pesticides_view);
+
+        //services
         workersItem = view.findViewById(R.id.worker_view);
         machineItem = view.findViewById(R.id.machines_view);
         consultancyItem = view.findViewById(R.id.consultancy_view);
@@ -131,61 +129,40 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
         ClickListenerforQuickLinks();
 
         //Image Slider View.
-        sliderView = view.findViewById(R.id.imageSlider);
+        SliderView sliderView = view.findViewById(R.id.imageSlider);
         sliderView.setSliderAdapter(new AdapterSlider(sliderItems));
         sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
         sliderView.setIndicatorSelectedColor(Color.WHITE);
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
 
-        //Vegetable Recycler View
-        vegetableRV = view.findViewById(R.id.vegetableRV);
-        vegetableRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        vegetableRV.setAdapter(new AdapterVegetable(vegetableItems, this));
 
 
-        //Fruits Recycler View
-        fruitsRV = view.findViewById(R.id.fruitsRV);
-        fruitsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        fruitsRV.setAdapter(new AdapterFruits(fruitItems, this));
-
-        //Pulses Recycler View
-        pulsesRV = view.findViewById(R.id.pulsesRV);
-        pulsesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        pulsesRV.setAdapter(new AdapterPulse(pulseItems,this));
-
-        //Seeds Recycler View
-        seedsRV = view.findViewById(R.id.seedsRV);
-        seedsRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        seedsRV.setAdapter(new AdapterSeed(seedItems, this));
-
-
-
-
-        vegSeeAll.setOnClickListener(new View.OnClickListener() {
+        //Products
+        vegetableItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragment(new VegFragment());
             }
         });
-        fruitSeeAll.setOnClickListener(new View.OnClickListener() {
+        fruitItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragment(new FruitsFragment());
             }
         });
-        pulsesSeeAll.setOnClickListener(new View.OnClickListener() {
+        pulsesItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragment(new PulsesFragment());
             }
         });
-        seedsSeeAll.setOnClickListener(new View.OnClickListener() {
+        seedItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragment(new SeedsFragment());
             }
         });
-
+        //crops and pesticide to be made.
 
         //Services
         workersItem.setOnClickListener(new View.OnClickListener() {
@@ -267,23 +244,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener,
             Intent it = new Intent(getContext(), ContactUsActivity.class);
             startActivity(it);
         }
-    }
-
-    @Override
-    public void onFruitClick(int position) {
-        startActivity(new Intent(getContext(), ItemHolderActivity.class));
-    }
-    @Override
-    public void onVegClick(int position) {
-        startActivity(new Intent(getContext(), ItemHolderActivity.class));
-    }
-    @Override
-    public void PulsesOnClick(int position) {
-        startActivity(new Intent(getContext(), ItemHolderActivity.class));
-    }
-    @Override
-    public void onSeedClick(int position) {
-        startActivity(new Intent(getContext(), ItemHolderActivity.class));
     }
 
     private void startServiceItemPage() {
