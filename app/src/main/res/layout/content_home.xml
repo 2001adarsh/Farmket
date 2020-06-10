@@ -5,20 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView117"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView10"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/red_back"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="PRODUCTS"
-        android:textColor="#fff"
-        android:textSize="32sp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView117"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/red_back"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="PRODUCTS"
+            android:textColor="#fff"
+            android:textSize="32sp" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/vegetable_view"
@@ -30,7 +41,7 @@
         app:layout_constraintEnd_toStartOf="@+id/fruits_view"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView117">
+        app:layout_constraintTop_toBottomOf="@+id/cardView10">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

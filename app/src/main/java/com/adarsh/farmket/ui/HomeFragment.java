@@ -135,8 +135,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         sliderView.setIndicatorSelectedColor(Color.WHITE);
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
 
-
-
         //Products
         vegetableItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +161,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
         });
         //crops and pesticide to be made.
+
+        // Image Slider for Service.
+        SliderView serviceBanner = view.findViewById(R.id.serviceBanner);
+        serviceBanner.setSliderAdapter(new AdapterSlider(sliderItems));
+        serviceBanner.setIndicatorAnimation(IndicatorAnimations.WORM);
+        serviceBanner.setIndicatorSelectedColor(Color.WHITE);
+        serviceBanner.setIndicatorUnselectedColor(Color.GRAY);
+
 
         //Services
         workersItem.setOnClickListener(new View.OnClickListener() {
