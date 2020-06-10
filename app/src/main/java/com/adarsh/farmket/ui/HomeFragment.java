@@ -44,6 +44,7 @@ import com.adarsh.farmket.helperClass.PulseItem;
 import com.adarsh.farmket.helperClass.SeedItem;
 import com.adarsh.farmket.helperClass.SliderItem;
 import com.adarsh.farmket.helperClass.VegetableItem;
+import com.adarsh.farmket.helperClass.WorkerItem;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -160,7 +161,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 setFragment(new SeedsFragment());
             }
         });
-        //crops and pesticide to be made.
+        /*
+        crops to be made.
+        -----*/
+        pesticidesItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new PesticidesFragment());
+            }
+        });
 
         // Image Slider for Service.
         SliderView serviceBanner = view.findViewById(R.id.serviceBanner);
@@ -174,7 +183,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         workersItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startServiceItemPage();
+                setFragment(new workersFragment());
             }
         });
 
@@ -188,7 +197,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         consultancyItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startServiceItemPage();
+                setFragment(new ConsultancyFragment());
             }
         });
 
@@ -198,7 +207,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startServiceItemPage();
             }
         });
-
     }
 
     private void ClickListenerforQuickLinks() {

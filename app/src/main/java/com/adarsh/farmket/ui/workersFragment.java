@@ -12,41 +12,38 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import static com.adarsh.farmket.MainActivity.onFullPesticidePage;
 
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.ServicesItemHolderPage;
-import com.adarsh.farmket.adapters.AdapterPesticides;
-import com.adarsh.farmket.helperClass.PesticidesItem;
+import com.adarsh.farmket.adapters.AdapterWorker;
+import com.adarsh.farmket.helperClass.WorkerItem;
 
 import java.util.ArrayList;
 
-public class PesticidesFragment extends Fragment implements AdapterPesticides.PesticidesOnClickListener {
+public class workersFragment extends Fragment implements AdapterWorker.WorkerOnClickListener {
 
-    public PesticidesFragment() { }
+    public workersFragment() { }
     RecyclerView TRV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        onFullPesticidePage = true;
-    View view = inflater.inflate(R.layout.fragment_pesticides, container, false);
-    TRV = view.findViewById(R.id.TpesticidesRV);
-    return  view;
+        View view = inflater.inflate(R.layout.fragment_workers, container, false);
+        TRV = view.findViewById(R.id.TworkerRV);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ArrayList<PesticidesItem> pesticidesItems = PesticidesItem.getPesticides();
+        ArrayList<WorkerItem> workerItems = WorkerItem.getworkers();
         TRV.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        TRV.setAdapter(new AdapterPesticides(pesticidesItems, this));
-
+        TRV.setAdapter(new AdapterWorker(workerItems,this));
     }
 
     @Override
-    public void PesticideOnClick(int position) {
+    public void WorkerOnClick(int position) {
         startActivity(new Intent(getContext(), ServicesItemHolderPage.class));
     }
 }
