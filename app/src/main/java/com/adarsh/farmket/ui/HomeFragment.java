@@ -63,9 +63,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
 
     //Products
-    private CardView vegetableItem, fruitItem, pulsesItem, seedItem, cropsItems, pesticidesItem;
+    private CardView vegetableItem, fruitItem, pulsesItem, seedItem, cropsItems, pesticidesItem,animalFoodItem,
+                    fertilizersItem;
     //Services
-    private CardView workersItem, machineItem, consultancyItem, chainPulleyItem;
+    private CardView workersItem, machineItem, consultancyItem, chainPulleyItem, combineItem,
+            electricianItem;
 
     public HomeFragment() { }
 
@@ -84,12 +86,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         seedItem = view.findViewById(R.id.seeds_view);
         cropsItems = view.findViewById(R.id.crops_view);
         pesticidesItem = view.findViewById(R.id.pesticides_view);
+        fertilizersItem = view.findViewById(R.id.fertilizer_view);
+        animalFoodItem = view.findViewById(R.id.animal_food_view);
 
         //services
         workersItem = view.findViewById(R.id.worker_view);
         machineItem = view.findViewById(R.id.machines_view);
         consultancyItem = view.findViewById(R.id.consultancy_view);
         chainPulleyItem = view.findViewById(R.id.chainPulley_view);
+        combineItem = view.findViewById(R.id.combine_view);
+        electricianItem = view.findViewById(R.id.electrician_view);
         quickLinksSetUp(view);
 
         frameLayout = getActivity().findViewById(R.id.main_frame);
@@ -170,6 +176,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 setFragment(new PesticidesFragment());
             }
         });
+        animalFoodItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new AnimalFoodFragment());
+            }
+        });
+
 
         // Image Slider for Service.
         SliderView serviceBanner = view.findViewById(R.id.serviceBanner);
