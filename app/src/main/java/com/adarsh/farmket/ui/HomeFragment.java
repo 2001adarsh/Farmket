@@ -8,43 +8,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.widget.ToolbarWidgetWrapper;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.adarsh.farmket.ContactUsActivity;
-import com.adarsh.farmket.ItemHolderActivity;
 import com.adarsh.farmket.R;
 import com.adarsh.farmket.ServicesItemHolderPage;
-import com.adarsh.farmket.adapters.AdapterFruits;
-import com.adarsh.farmket.adapters.AdapterMachine;
-import com.adarsh.farmket.adapters.AdapterPesticides;
-import com.adarsh.farmket.adapters.AdapterPulse;
-import com.adarsh.farmket.adapters.AdapterSeed;
 import com.adarsh.farmket.adapters.AdapterSlider;
-import com.adarsh.farmket.adapters.AdapterVegetable;
-import com.adarsh.farmket.helperClass.FruitItem;
-import com.adarsh.farmket.helperClass.MachineItem;
-import com.adarsh.farmket.helperClass.PesticidesItem;
-import com.adarsh.farmket.helperClass.PulseItem;
-import com.adarsh.farmket.helperClass.SeedItem;
 import com.adarsh.farmket.helperClass.SliderItem;
-import com.adarsh.farmket.helperClass.VegetableItem;
-import com.adarsh.farmket.helperClass.WorkerItem;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -59,8 +37,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private FrameLayout frameLayout;
 
     //QuickLinks
-    private CircleImageView vegy, fruity, cropy, pulsy, seedy, machy, pesty, conty;
-    private TextView tvegy, tfruity, tcropy, tpulsy, tseedy, tmachy, tpesty, tconty;
+    private CircleImageView vegy, fruity, cropy, seedy, machy, pesty, conty , weather;
+    private TextView tvegy, tfruity, tcropy, tseedy, tmachy, tpesty, tconty , tweather;
 
     //Products
     private CardView vegetableItem, fruitItem, pulsesItem, seedItem, cropsItems, pesticidesItem,animalFoodItem,
@@ -115,8 +93,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         seedy = (CircleImageView) view.findViewById(R.id.quick_seeds);
         tseedy = (TextView) view.findViewById(R.id.quick_seeds_txt);
 
-        pulsy = (CircleImageView) view.findViewById(R.id.quick_pulses);
-        tpulsy = (TextView) view.findViewById(R.id.quick_pulses_txt);
+        weather = (CircleImageView) view.findViewById(R.id.quick_weather);
+        tweather = (TextView) view.findViewById(R.id.quick_weather_txt);
 
         machy = (CircleImageView) view.findViewById(R.id.quick_machines);
         tmachy = (TextView) view.findViewById(R.id.quick_machines_txt);
@@ -231,8 +209,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         tseedy.setOnClickListener(this);
         cropy.setOnClickListener(this);
         tcropy.setOnClickListener(this);
-        pulsy.setOnClickListener(this);
-        tpulsy.setOnClickListener(this);
+        weather.setOnClickListener(this);
+        tweather.setOnClickListener(this);
         machy.setOnClickListener(this);
         tmachy.setOnClickListener(this);
         pesty.setOnClickListener(this);
@@ -261,8 +239,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         } else if (view.getId() == R.id.quick_seeds || (view.getId() == R.id.quick_seeds_txt)) {
             setFragment(new SeedsFragment());
-        } else if (view.getId() == R.id.quick_pulses || (view.getId() == R.id.quick_pulses_txt)) {
-            setFragment(new PulsesFragment());
+        } else if (view.getId() == R.id.quick_weather || (view.getId() == R.id.quick_weather_txt)) {
+            setFragment(new WeatherFragment());  //Weather Fragment
+
         } else if (view.getId() == R.id.quick_machines || (view.getId() == R.id.quick_machines_txt)) {
             setFragment(new MachineFragment());
         } else if (view.getId() == R.id.quick_pesticides || (view.getId() == R.id.quick_pesticides_txt)) {

@@ -101,7 +101,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/quick_pulses"
+                android:id="@+id/quick_weather"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/pulses_icon"
@@ -112,7 +112,7 @@
                 app:layout_constraintVertical_bias="0.19" />
 
             <TextView
-                android:id="@+id/quick_pulses_txt"
+                android:id="@+id/quick_weather_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pulses"
@@ -120,7 +120,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/quick_pulses" />
+                app:layout_constraintTop_toBottomOf="@+id/quick_weather" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </TableRow>
 
