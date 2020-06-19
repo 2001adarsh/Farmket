@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adarsh.farmket.ContactUsActivity;
@@ -37,7 +38,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private FrameLayout frameLayout;
 
     //QuickLinks
-    private CircleImageView vegy, fruity, cropy, seedy, machy, pesty, conty , weather;
+    private CircleImageView vegy, fruity, cropy, seedy, machy, pesty, conty;
+    private ImageView weather;
     private TextView tvegy, tfruity, tcropy, tseedy, tmachy, tpesty, tconty , tweather;
 
     //Products
@@ -93,7 +95,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         seedy = (CircleImageView) view.findViewById(R.id.quick_seeds);
         tseedy = (TextView) view.findViewById(R.id.quick_seeds_txt);
 
-        weather = (CircleImageView) view.findViewById(R.id.quick_weather);
+        weather = (ImageView) view.findViewById(R.id.quick_weather);
         tweather = (TextView) view.findViewById(R.id.quick_weather_txt);
 
         machy = (CircleImageView) view.findViewById(R.id.quick_machines);

@@ -20,10 +20,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import com.adarsh.farmket.R
+import com.adarsh.farmket.R.drawable.*
 import com.adarsh.farmket.helperClass.WeatherResponse
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_weather.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -69,6 +71,12 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_weather)
+        toolbar.setNavigationIcon(ic_arrow_back_black_24dp)
+        toolbar.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
+
         val location = context?.let { FusedLocationProviderClient(it).lastLocation }   //This is
         // because we have already checked the permission before calling this function
 
@@ -93,9 +101,38 @@ class WeatherFragment : Fragment() {
                     val response = withContext(Dispatchers.IO) {
                         okHttpClient.newCall(request).execute().body?.string()
                     }
-                    Log.i("Networking", "${response}")
+
+                    Log.i("Networking", response)
 
                     val weather = gson.fromJson<WeatherResponse>(response, WeatherResponse::class.java)
+
+                    if(weather.current?.isDay == "yes"){
+                        frameLayout7.setBackgroundResource(dayr)
+                    }
+                    else{
+                        frameLayout7.setBackgroundResource(nightr)
+                    }
+
+                    pleaseWait.visibility = View.GONE
+                    visible()
+
+
+                    city.text = weather.location?.name
+                    region.text = weather.location?.region
+                    country.text = weather.location?.country
+
+
+                    temp.text = weather.current?.temperature.toString()
+                    desc.text = weather.current?.weatherDescriptions?.get(0) ?: "Internet Not " +
+                            "connected!"
+                    Picasso.get().load(weather.current?.weatherIcons?.get(0)).into(desc_img)
+
+                    wind.text = weather.current?.windSpeed.toString()
+                    rain.text = weather.current?.precip.toString()
+                    humidity.text = weather.current?.humidity.toString()
+                    pressure.text = weather.current?.pressure.toString()
+                    uv.text = weather.current?.uvIndex.toString()
+                    feelsLike.text = weather.current?.feelslike.toString()
 
                 }
                 }else{
@@ -104,6 +141,22 @@ class WeatherFragment : Fragment() {
 
         }
 
+    }
+
+    private fun visible() {
+        divider18.visibility = View.VISIBLE
+        textView131.visibility = View.VISIBLE
+        divider19.visibility = View.VISIBLE
+        textView136.visibility = View.VISIBLE
+        textView138.visibility = View.VISIBLE
+        textView140.visibility = View.VISIBLE
+        textView145.visibility = View.VISIBLE
+        textView142.visibility = View.VISIBLE
+        textView152.visibility = View.VISIBLE
+        textView149.visibility = View.VISIBLE
+        textView151.visibility = View.VISIBLE
+        textView148.visibility = View.VISIBLE
+        textView143.visibility = View.VISIBLE
     }
 
 
